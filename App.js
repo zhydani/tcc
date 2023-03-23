@@ -2,13 +2,10 @@ import {
   AppBar, Backdrop,
   BackdropSubheader, IconButton, Surface
 } from "@react-native-material/core";
-import { createStackNavigator } from '@react-navigation/stack';
 import { React, useState } from 'react';
 import { StyleSheet, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './src/screens/HomeScreen';
-
-const Stack = createStackNavigator();
 
 const App = () => {
   const [revealed, setRevealed] = useState(false);
@@ -20,7 +17,6 @@ const App = () => {
         <AppBar
           title="TCC"
           transparent
-          
           leading={props => (
             <IconButton
               icon={props => (
