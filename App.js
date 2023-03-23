@@ -15,10 +15,12 @@ const App = () => {
   return (
     <Backdrop
       revealed={revealed}
+      style={styles.header}
       header={
         <AppBar
-          title="Screen title"
+          title="TCC"
           transparent
+          
           leading={props => (
             <IconButton
               icon={props => (
@@ -45,6 +47,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
+  header: {
+    backgroundColor: "#FF5D8F",
+  }
 });
 
 export default App;
