@@ -4,7 +4,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 
 const App = () => {
   return (
-    <HeaderComponent subheader="Localização" content={<HomeScreen />}></HeaderComponent>
+    <HeaderComponent subheader="Localização" content={<HomeScreen />} />
   );
 };
 
