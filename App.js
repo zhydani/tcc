@@ -1,6 +1,6 @@
 import {
   AppBar, Backdrop,
-  BackdropSubheader, IconButton, Surface
+  BackdropSubheader, IconButton, ListItem, Surface
 } from "@react-native-material/core";
 import { React, useState } from 'react';
 import { StyleSheet, View } from "react-native";
@@ -28,7 +28,21 @@ const App = () => {
           )}
         />
       }
-      backLayer={<View style={{ height: 120 }} />}
+      backLayer={
+        <View style={styles.menu}>
+          <ListItem
+            style={styles.listItem}
+            title="Contatos"
+            leading={<Icon name="contacts" size={24} />}
+            trailing={props => <Icon name="chevron-right" {...props} />}
+          />
+          <ListItem
+            title="Contatos"
+            leading={<Icon name="contacts" size={24} />}
+            trailing={props => <Icon name="chevron-right" {...props} />}
+          />
+        </View>
+      }
     >
       <BackdropSubheader title="Subheader" />
       <Surface style={styles.content}>
@@ -44,6 +58,13 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   header: {
+    backgroundColor: "#FF5D8F",
+  },
+  menu:{
+    // height: 110,
+    padding: 4
+  },
+  listItem:{
     backgroundColor: "#FF5D8F",
   }
 });
