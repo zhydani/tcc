@@ -1,5 +1,8 @@
+// import { FAB, Stack } from "@react-native-material/core";
+// i'ld use fab but dont work and i dont know why
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const HomeScreen = () => {
   const handleButtonPress = () => {
@@ -9,7 +12,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-        <Text style={styles.buttonText}>Enviar mensagem automática</Text>
+        <Icon name="location-pin" size={40} color="white"/>
       </TouchableOpacity>
     </View>
   );
@@ -22,15 +25,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: 'bold',
+    backgroundColor: '#FF5D8F',
+    borderRadius: 50,
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 6,
   },
 });
 
