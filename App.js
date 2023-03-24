@@ -4,6 +4,7 @@ import {
 } from "@react-native-material/core";
 import { React, useState } from 'react';
 import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import IconSet from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './src/screens/HomeScreen';
@@ -15,19 +16,21 @@ const App = () => {
       revealed={revealed}
       style={styles.header}
       header={
-        <AppBar
-          title="Ciclo Seguro"
-          transparent
-          leading={props => (
-            <IconButton
-              icon={props => (
-                <Icon name={revealed ? "close" : "menu"} {...props} />
-              )}
-              onPress={() => setRevealed(prevState => !prevState)}
-              {...props}
-            />
-          )}
-        />
+        <SafeAreaView>
+          <AppBar
+            title="Ciclo Seguro"
+            transparent
+            leading={props => (
+              <IconButton
+                icon={props => (
+                  <Icon name={revealed ? "close" : "menu"} {...props} />
+                )}
+                onPress={() => setRevealed(prevState => !prevState)}
+                {...props}
+              />
+            )}
+          />
+        </SafeAreaView>
       }
       backLayer={
         <View style={styles.menu}>
