@@ -46,21 +46,10 @@ const App = () => {
               <Text style={styles.menuItemText}>Configurações</Text>
             </View>
           </View>
-          {/* <ListItem
-            style={styles.listItem}
-            title="Contatos"
-            leading={<Icon name="contacts" size={24} />}
-            trailing={props => <Icon name="chevron-right" {...props} />}
-          />
-          <ListItem
-            title="Contatos"
-            leading={<Icon name="contacts" size={24} />}
-            trailing={props => <Icon name="chevron-right" {...props} />}
-          /> */}
         </View>
       }
     >
-      <BackdropSubheader title="Subheader" />
+      <BackdropSubheader title="Localização" />
       <Surface style={styles.content}>
         <HomeScreen />
       </Surface>
@@ -91,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: "white",
-    marginBottom: 16,
+    marginBottom: 20,
   },
   menuItem: {
     flexDirection: 'row',
