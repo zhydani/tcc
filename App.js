@@ -1,9 +1,10 @@
 import {
   AppBar, Backdrop,
-  BackdropSubheader, IconButton, ListItem, Surface
+  BackdropSubheader, Divider, IconButton, Surface
 } from "@react-native-material/core";
 import { React, useState } from 'react';
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import IconSet from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './src/screens/HomeScreen';
 
@@ -30,7 +31,19 @@ const App = () => {
       }
       backLayer={
         <View style={styles.menu}>
-          <ListItem
+          <View style={styles.drawerContent}>
+            <Text style={styles.drawerText}>Menu</Text>
+            <View style={styles.menuItem}>
+              <Icon name="contacts" size={24} color="white" />
+              <Text style={styles.menuItemText}>Contatos</Text>
+            </View>
+            <Divider style={{ marginBottom: 10 }} leadingInset={45} />
+            <View style={styles.menuItem}>
+              <IconSet name="settings-sharp" size={24} color="white" />
+              <Text style={styles.menuItemText}>Configurações</Text>
+            </View>
+          </View>
+          {/* <ListItem
             style={styles.listItem}
             title="Contatos"
             leading={<Icon name="contacts" size={24} />}
@@ -40,7 +53,7 @@ const App = () => {
             title="Contatos"
             leading={<Icon name="contacts" size={24} />}
             trailing={props => <Icon name="chevron-right" {...props} />}
-          />
+          /> */}
         </View>
       }
     >
@@ -66,7 +79,27 @@ const styles = StyleSheet.create({
   },
   listItem:{
     backgroundColor: "#FF5D8F",
-  }
+  },
+  drawerContent: {
+    padding: 16,
+    backgroundColor: "#FF5D8F",
+  },
+  drawerText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: "white",
+    marginBottom: 16,
+  },
+  menuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  menuItemText: {
+    marginLeft: 16,
+    fontSize: 16,
+    color: "white",
+  },
 });
 
 export default App;
