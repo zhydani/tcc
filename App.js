@@ -15,7 +15,7 @@ const App = () => {
       style={styles.header}
       header={
         <AppBar
-          title="TCC"
+          title="Ciclo Seguro"
           transparent
           leading={props => (
             <IconButton
