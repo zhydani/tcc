@@ -1,13 +1,17 @@
 import {
-  AppBar, Backdrop,
-  BackdropSubheader, Divider, IconButton, Surface
+  AppBar,
+  Backdrop,
+  BackdropSubheader,
+  Divider,
+  IconButton,
+  Surface
 } from "@react-native-material/core";
-import { React, useState } from 'react';
+import { React, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import IconSet from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import HomeScreen from './src/screens/HomeScreen';
+import { SafeAreaView } from "react-native-safe-area-context";
+import IconSet from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import HomeScreen from "./src/screens/HomeScreen";
 
 const App = () => {
   const [revealed, setRevealed] = useState(false);
@@ -66,7 +70,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF5D8F",
   },
   menu:{
-    // height: 110,
     padding: 4
   },
   listItem:{
