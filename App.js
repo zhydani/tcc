@@ -7,7 +7,6 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    // <HeaderComponent subheader="Localização" content={<HomeScreen />} />
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name="HomeScreen" component={HomeScreen} />

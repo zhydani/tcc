@@ -5,8 +5,6 @@ import { React } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import IconSet from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-
-// import HomeScreen from "../screens/HomeScreen";
   
 function Menu({ navigation }) {
     return (
