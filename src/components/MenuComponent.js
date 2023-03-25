@@ -18,10 +18,12 @@ function Menu({ navigation }) {
                 </View>
             </TouchableOpacity>
             <Divider style={{ marginBottom: 10 }} leadingInset={45} />
-            <View style={styles.menuItem}>
-                <Icon name="contacts" size={24} color="white" />
-                <Text style={styles.menuItemText}>Contatos</Text>
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('ContactManageScreen')}>
+                <View style={styles.menuItem}>
+                    <Icon name="contacts" size={24} color="white" />
+                    <Text style={styles.menuItemText}>Contatos</Text>
+                </View>
+            </TouchableOpacity>
             <Divider style={{ marginBottom: 10 }} leadingInset={45} />
             <View style={styles.menuItem}>
                 <IconSet name="settings-sharp" size={24} color="white" />
