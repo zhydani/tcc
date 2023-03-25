@@ -13,10 +13,10 @@ function Menu({ navigation }) {
         <View style={styles.menu}>
         <View style={styles.drawerContent}>
             <Text style={styles.drawerText}>Menu</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
                 <View style={styles.menuItem}>
                     <Icon name="home" size={24} color="white" />
-                    <Text style={styles.menuItemText}>Home</Text>
+                    <Text style={styles.menuItemText}>Tela Inicial</Text>
                 </View>
             </TouchableOpacity>
             <Divider style={{ marginBottom: 10 }} leadingInset={45} />

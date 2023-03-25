@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import HeaderComponent from "../components/HeaderComponent";
 
-const HomeScreen = () => {
+const HomeContent = () => {
   const handleButtonPress = () => {
     // here is the logic 
   };
@@ -13,6 +14,13 @@ const HomeScreen = () => {
         <Icon name="location-pin" size={40} color="white"/>
       </TouchableOpacity>
     </View>
+  );
+};
+
+function HomeScreen({navigation}) {
+
+  return (
+    <HeaderComponent subheader="Localização" content={<HomeContent />} navigation={navigation}/>
   );
 };
 

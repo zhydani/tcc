@@ -10,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import MenuComponent from "./MenuComponent";
   
-function Header({ content, subheader }) {
+function Header({ content, subheader, navigation }) {
 const [revealed, setRevealed] = useState(false);
     return (
         <Backdrop
@@ -34,7 +34,7 @@ const [revealed, setRevealed] = useState(false);
             </SafeAreaView>
         }
         backLayer={
-            <MenuComponent />
+            <MenuComponent navigation={navigation} />
         }
         >
         <BackdropSubheader title={subheader} />

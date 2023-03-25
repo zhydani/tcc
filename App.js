@@ -1,10 +1,18 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { React } from "react";
-import HeaderComponent from "./src/components/HeaderComponent";
 import HomeScreen from "./src/screens/HomeScreen";
 
-const App = () => {
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <HeaderComponent subheader="Localização" content={<HomeScreen />} />
+    // <HeaderComponent subheader="Localização" content={<HomeScreen />} />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }} >
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
