@@ -8,20 +8,13 @@ import requestContactsPermission from "../utils/ContactPermission";
 function ContactManageContent() {
   const [contacts, setContacts] = useState([]);
 
-  const fetchContacts = async () => {
-    Contacts.getAll().then(contacts => {
-      console.log(contacts)
-      setContacts(contacts)
-    })
-    // setContacts(data);
-  };
-
   useEffect(() => {
     requestContactsPermission();
-    fetchContacts();
+    Contacts.getAll().then(contacts => {
+      // console.log(contacts)
+      setContacts(contacts)
+    })
   }, []);
-
-  
 
   return (
     <View>
