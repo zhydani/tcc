@@ -9,9 +9,11 @@ function ContactManageContent() {
   const [contacts, setContacts] = useState([]);
 
   const fetchContacts = async () => {
-    const data = await Contacts.getAll();
-    // console.log(data)
-    setContacts(data);
+    Contacts.getAll().then(contacts => {
+      console.log(contacts)
+      setContacts(contacts)
+    })
+    // setContacts(data);
   };
 
   useEffect(() => {
