@@ -1,18 +1,28 @@
 // import React from 'react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import Contacts from 'react-native-contacts';
 import HeaderComponent from "../components/HeaderComponent";
 import requestContactsPermission from "../utils/ContactPermission";
 
 function ContactManageContent() {
+  const [contacts, setContacts] = useState([]);
+
+  const fetchContacts = async () => {
+    const data = await Contacts.getAll();
+    // console.log(data)
+    setContacts(data);
+  };
 
   useEffect(() => {
     requestContactsPermission();
+    fetchContacts();
   }, []);
 
+  
 
   return (
-    <View style={styles.container}>
+    <View>
     </View>
   );
 };
