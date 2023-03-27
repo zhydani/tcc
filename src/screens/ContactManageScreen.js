@@ -62,7 +62,7 @@ function ContactManageContent() {
       </Pressable>
       {/* <Button title="Abrir contatos" onPress={openContactsModal} /> */}
 
-      <Modal style={styles.centeredView} animationType="slide" visible={modalVisible}>
+      <Modal style={styles.centeredView} animationType="slide" visible={modalVisible} transparent>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.inputView}>
