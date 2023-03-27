@@ -61,8 +61,6 @@ function ContactManageContent() {
         onPress={openContactsModal}>
         <Text style={styles.textStyle}><Icon name="plus" size={18} color="white"/> Adicionar Contato</Text>
       </Pressable>
-      {/* <Button title="Abrir contatos" onPress={openContactsModal} /> */}
-
       <Modal style={styles.centeredView} animationType="slide" visible={modalVisible} transparent>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
