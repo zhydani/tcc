@@ -1,10 +1,10 @@
-// import React from 'react';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Modal, Pressable, Text, TextInput, View } from 'react-native';
 import Contacts from 'react-native-contacts';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HeaderComponent from "../../components/HeaderComponent";
+import { keyExtractor } from '../../controllers/ContactController';
 import requestContactsPermission from "../../utils/ContactPermission";
 import styles from './Styles';
 
@@ -24,10 +24,6 @@ function ContactManageContent() {
         setModalVisible(true);
       }
     })
-  };
-
-  const keyExtractor = (item, idx) => {
-    return item?.recordID?.toString() || idx.toString();
   };
 
   const Contact = ({contact}) => {
