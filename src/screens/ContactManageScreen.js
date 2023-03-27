@@ -1,7 +1,8 @@
 // import React from 'react';
 import React, { useEffect, useState } from 'react';
-import { FlatList, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Contacts from 'react-native-contacts';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HeaderComponent from "../components/HeaderComponent";
 import requestContactsPermission from "../utils/ContactPermission";
@@ -64,6 +65,16 @@ function ContactManageContent() {
       <Modal style={styles.centeredView} animationType="slide" visible={modalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+            <View style={styles.inputView}>
+              <Ionicons name="search" size={20} color="#ccc" />
+              <TextInput
+                style={styles.input}
+                // onChangeText={onChangeNumber}
+                // value={number}
+                placeholder="Buscar contato"
+                keyboardType="default"
+              />
+            </View>
             <FlatList
               data={contacts}
               renderItem={renderItem}
@@ -94,7 +105,7 @@ const styles = StyleSheet.create({
   list: {
     height: 310,
   },
-// item contato
+  // item contato
   contactCon: {
     flex: 1,
     width: 500,
@@ -127,7 +138,7 @@ const styles = StyleSheet.create({
   phoneNumber: {
     color: '#888',
   },
-// button open modal
+  // button open modal
   button: {
     borderRadius: 20,
     padding: 10,
@@ -140,6 +151,24 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+
+  // input modal
+  inputView: {
+    flexDirection: 'row', 
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    height: 40,
+    width: 230,
+    margin: 12,
+    borderWidth: 1,
+    borderColor: "#FF5D8F",
+    borderRadius: 50,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    padding: 10,
   },
 
   // modal
