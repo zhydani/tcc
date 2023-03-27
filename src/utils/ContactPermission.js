@@ -13,11 +13,6 @@ async function requestContactsPermission() {
           buttonPositive: 'OK',
         },
       );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('Permissão concedida');
-      } else {
-        console.log('Permissão negada');
-      }
     } catch (err) {
       console.warn(err);
     }
