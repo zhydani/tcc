@@ -92,7 +92,7 @@ function ContactManageScreen({navigation}) {
 const styles = StyleSheet.create({
   // lista
   list: {
-    height: 200,
+    height: 300,
   },
 // item contato
   contactCon: {
