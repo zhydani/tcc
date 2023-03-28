@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Modal, Pressable, Text, TextInput, View } from 'react-native';
-import Contacts from 'react-native-contacts';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HeaderComponent from "../../components/HeaderComponent";
-import { keyExtractor } from '../../controllers/ContactController';
+import { getAllContacts, keyExtractor } from '../../controllers/ContactController';
 import requestContactsPermission from "../../utils/ContactPermission";
 import styles from './Styles';
 
@@ -15,15 +14,15 @@ function ContactManageContent() {
 
   useEffect(() => {
     requestContactsPermission();
-  }, []);
-
-  const openContactsModal = async () => {
-    Contacts.getAll().then(contacts => {
+    getAllContacts().then(contacts => {
       if (contacts.length > 0) {
         setContacts(contacts);
-        setModalVisible(true);
       }
     })
+  }, []);
+
+  function openContactsModal() {
+    setModalVisible(true);
   };
 
   const Contact = ({contact}) => {
