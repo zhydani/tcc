@@ -5,7 +5,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HeaderComponent from "../../components/HeaderComponent";
 import { getAllContacts, keyExtractor } from '../../controllers/ContactController';
 import requestContactsPermission from "../../utils/ContactPermission";
+import ContactItem from './ContactItem';
 import styles from './Styles';
+
 
 function ContactManageContent() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,29 +26,9 @@ function ContactManageContent() {
   function openContactsModal() {
     setModalVisible(true);
   };
-
-  const Contact = ({contact}) => {
-    return (
-      <View style={styles.contactCon}>
-        <View style={styles.imgCon}>
-          <View style={styles.placeholder}>
-            <Text style={styles.txt}>{contact?.givenName[0]}</Text>
-          </View>
-        </View>
-        <View style={styles.contactDat}>
-          <Text style={styles.name}>
-            {contact?.givenName} {contact?.middleName && contact.middleName + ' '}
-            {contact?.familyName}
-          </Text>
-          <Text style={styles.phoneNumber}>
-            {contact?.phoneNumbers[0]?.number}
-          </Text>
-        </View>
-      </View>
-    );
-  };
+  
   const renderItem = ({item, index}) => {
-    return <Contact contact={item} />;
+    return <ContactItem contact={item} />;
   };
 
   return (
@@ -88,7 +70,6 @@ function ContactManageContent() {
 };
 
 function ContactManageScreen({navigation}) {
-
   return (
     <HeaderComponent subheader="Contatos" content={<ContactManageContent />} navigation={navigation}/>
   );
