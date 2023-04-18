@@ -8,6 +8,11 @@ function ContactManageContent() {
   const [contacts, setContacts] = useState([]);
 
   const handleAddContact = (newContact) => {
+    const contactExists = contacts.find(contact => contact.recordID === newContact.recordID);
+    if (contactExists) {
+      console.log('ja existe');
+      return;
+    }
     setContacts([...contacts, newContact]);
   };
 
