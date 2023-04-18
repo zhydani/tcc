@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Modal, Pressable, Text, TextInput, View } from 'react-native';
+import { FlatList, Modal, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { getAllContacts, keyExtractor } from '../../controllers/ContactController';
@@ -8,9 +8,13 @@ import ContactItem from './ContactItem';
 import styles from './Styles';
 
 
-function ModalContacts() {
+function ModalContacts({ onAddContact }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [contacts, setContacts] = useState([]);
+
+  function handleAddContact (newContact) {
+    onAddContact(newContact);
+  }
 
   useEffect(() => {
     requestContactsPermission();
@@ -26,8 +30,13 @@ function ModalContacts() {
   };
   
   const renderItem = ({item, index}) => {
-    return <ContactItem contact={item} />;
+    // return <ContactItem contact={item} />;
+    return <TouchableOpacity onPress={() => handleAddContact(item)}><ContactItem contact={item} /></TouchableOpacity>
   };
+
+  function handlePressContato(contato) {
+    adicionarContato(contato);
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
