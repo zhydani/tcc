@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderComponent from "../../components/HeaderComponent";
-// import { Alert } from '../../components/default/alert/Alert';
 import Alert from '../../components/default/alert/Alert';
+import ListEmpty from '../../components/default/empty/ListEmpty';
 import ModalContacts from './ModalContacts';
 import styles from './StylesIndex';
 
@@ -39,6 +39,9 @@ function ContactManageContent() {
       <FlatList
         style={styles.list}
         data={contacts}
+        ListEmptyComponent={ () => {
+            return <ListEmpty />
+        }}
         renderItem={({ item, index }) => (
           <View style={styles.contactCon}>
             <View style={styles.contactGroup}>
