@@ -29,6 +29,7 @@ const HomeContent = () => {
     // Obter as coordenadas de latitude e longitude do dispositivo
     Geolocation.getCurrentPosition(
       position => {
+        setLoad(true);
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
@@ -39,12 +40,26 @@ const HomeContent = () => {
         const contactsWithPhone = contacts.filter((c) => c?.phoneNumbers && c?.phoneNumbers.length > 0);
         const numbers = contactsWithPhone.map((c) => c?.phoneNumbers[0].number);
         
-        // Linking.openURL(`whatsapp://send?text=${encodeURIComponent(message)}&phone=${numbers.join(',')}`);
-        console.log(message + " numeros enviados:  " + numbers.join(','))
-        setLabelAlert('Mensagens enviadas');
-        setIconAlert('send');
-        setIconColorAlert('#FF5D8F');
-        setControlAlert(true);
+        setLoad(true);
+        
+        try {
+          if(position){
+            // Linking.openURL(`whatsapp://send?text=${encodeURIComponent(message)}&phone=${numbers.join(',')}`);
+            console.log(message + " numeros enviados:  " + numbers.join(','))
+            setLabelAlert('Mensagens enviadas');
+            setIconAlert('send');
+            setIconColorAlert('#FF5D8F');
+            setControlAlert(true);
+          }
+        } catch (error) {
+          console.log(error);
+          setLabelAlert('Erro ao enviar mensagem');
+          setIconAlert('error');
+          setIconColorAlert('red');
+          setControlAlert(true);
+        }
+        
+        setLoad(false);
       },
       error => alert(error.message),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
