@@ -1,13 +1,20 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HeaderComponent from "../../components/HeaderComponent";
+import Alert from '../../components/default/alert/Alert';
 import requestPermission from "../../utils/LocalizationPermission";
 import styles from './Styles';
 
 const HomeContent = () => {
+
+  // Alert 
+  const [controlAlert, setControlAlert] = useState(false);
+  const [labelAlert, setLabelAlert] = useState(null);
+  const [iconAlert, setIconAlert] = useState(null);
+  const [iconColorAlert, setIconColorAlert] = useState(null);
   
   useEffect(() => {
     requestPermission();
@@ -30,6 +37,10 @@ const HomeContent = () => {
         
         // Linking.openURL(`whatsapp://send?text=${encodeURIComponent(message)}&phone=${numbers.join(',')}`);
         console.log(message + " numeros enviados:  " + numbers.join(','))
+        setLabelAlert('Mensagens Enviadas');
+        setIconAlert('send');
+        setIconColorAlert('#FF5D8F');
+        setControlAlert(true);
       },
       error => alert(error.message),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -50,11 +61,20 @@ const HomeContent = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-        <Icon name="location-pin" size={40} color="white"/>
-      </TouchableOpacity>
-    </View>
+    <>
+      <Alert 
+        controlAlert={controlAlert} 
+        label={labelAlert}
+        nameIcon={iconAlert}
+        colorIcon={iconColorAlert}
+        onPress={() => setControlAlert(!controlAlert)}
+      />
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
+          <Icon name="location-pin" size={40} color="white"/>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 };
 
