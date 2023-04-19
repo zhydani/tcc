@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderComponent from "../../components/HeaderComponent";
 import ModalContacts from './ModalContacts';
 import styles from './StylesIndex';
@@ -28,8 +29,8 @@ function ContactManageContent() {
         style={styles.list}
         data={contacts}
         renderItem={({ item, index }) => (
-          <TouchableOpacity style={styles.contactItem} onPress={() => handleRemoveContact(index)}>
-            <View style={styles.contactCon}>
+          <View style={styles.contactCon}>
+            <View style={styles.contactGroup}>
               <View style={styles.imgCon}>
                   <View style={styles.placeholder}>
                   <Text style={styles.txt}>{item?.givenName[0]}</Text>
@@ -45,7 +46,10 @@ function ContactManageContent() {
                   </Text>
               </View>
             </View>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.contactIcon} onPress={() => handleRemoveContact(index)}>
+              <Icon name="trash" size={25} color="red"/>
+            </TouchableOpacity>
+          </View>
         )}
         keyExtractor={(item, index) => index.toString()}
       />

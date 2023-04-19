@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.5,
         borderBottomColor: '#d9d9d9',
     },
+    contactGroup: {
+        flex: 1,
+        flexDirection: 'row',
+    },
     imgCon: {},
     placeholder: {
         width: 50,
@@ -35,6 +39,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 12,
     },
+    contactIcon: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        paddingLeft: 130,
+        paddingBottom: 10,
+    },
     txt: {
         fontSize: 22,
     },
@@ -43,6 +53,7 @@ const styles = StyleSheet.create({
     },
     phoneNumber: {
         color: '#888',
+        width: 500,
     },
 });
 
