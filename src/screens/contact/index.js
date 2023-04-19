@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,28 +8,46 @@ import ListEmpty from '../../components/default/empty/ListEmpty';
 import ModalContacts from './ModalContacts';
 import styles from './StylesIndex';
 
+
 function ContactManageContent() {
   const [contacts, setContacts] = useState([]);
   const [controlAlert, setControlAlert] = useState(false)
   const [labelAlert, setLabelAlert] = useState(null)
   const [iconAlert, setIconAlert] = useState(null)
   const [iconColorAlert, setIconColorAlert] = useState(null)
+  
+  const iconAlertSuccess = () => {
+    setIconAlert('check');
+    setIconColorAlert('green');
+  }
 
-  const handleAddContact = (newContact) => {
+  const iconAlertError = () => {
+    setIconAlert('close');
+    setIconColorAlert('red');
+  }
+
+  const handleAddContact = async (newContact) => {
     const contactExists = contacts.find(
       contact => contact.recordID === newContact.recordID
     );
+    
     if (contactExists) {
       setLabelAlert('Contato já cadastrado');
-      setIconAlert('close');
-      setIconColorAlert('red');
-      setControlAlert(true);
+      iconAlertError;
       return;
     }
+
     setContacts([...contacts, newContact]);
-    setLabelAlert('Contato cadastrado');
-    setIconAlert('check');
-    setIconColorAlert('green');
+
+    try {
+      await AsyncStorage.setItem('@contacts', JSON.stringify([...contacts, newContact]));
+      setLabelAlert('Contato cadastrado');
+      iconAlertSuccess;
+    } catch (error) {
+      setLabelAlert('Erro');
+      iconAlertError;
+    }
+    
     setControlAlert(true);
   };
 
@@ -37,8 +56,7 @@ function ContactManageContent() {
     newContacts.splice(index, 1);
     setContacts(newContacts);
     setLabelAlert('Contato excluído');
-    setIconAlert('check');
-    setIconColorAlert('green');
+    iconAlertSuccess;
     setControlAlert(true);
   };
 
