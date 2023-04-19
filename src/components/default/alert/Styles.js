@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: 'white',
     },
+    iconAlert: {
+        textAlign: 'center',
+        textAlignVertical: 'center',
+    },
     label: {
         color: 'black',
         textAlign: 'center',

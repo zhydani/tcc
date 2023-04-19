@@ -11,6 +11,8 @@ function ContactManageContent() {
   const [contacts, setContacts] = useState([]);
   const [controlAlert, setControlAlert] = useState(false)
   const [labelAlert, setLabelAlert] = useState(null)
+  const [iconAlert, setIconAlert] = useState(null)
+  const [iconColorAlert, setIconColorAlert] = useState(null)
 
   const handleAddContact = (newContact) => {
     const contactExists = contacts.find(
@@ -18,11 +20,15 @@ function ContactManageContent() {
     );
     if (contactExists) {
       setLabelAlert('Contato já cadastrado');
+      setIconAlert('close');
+      setIconColorAlert('red');
       setControlAlert(true);
       return;
     }
     setContacts([...contacts, newContact]);
-    setLabelAlert('Contato cadastrado com sucesso');
+    setLabelAlert('Contato cadastrado');
+    setIconAlert('check');
+    setIconColorAlert('green');
     setControlAlert(true);
   };
 
@@ -30,8 +36,10 @@ function ContactManageContent() {
     const newContacts = [...contacts];
     newContacts.splice(index, 1);
     setContacts(newContacts);
-    setLabelAlert('Contato excluído com sucesso');
-      setControlAlert(true);
+    setLabelAlert('Contato excluído');
+    setIconAlert('check');
+    setIconColorAlert('green');
+    setControlAlert(true);
   };
 
   return (
@@ -39,6 +47,8 @@ function ContactManageContent() {
       <Alert 
         controlAlert={controlAlert} 
         label={labelAlert}
+        nameIcon={iconAlert}
+        colorIcon={iconColorAlert}
         onPress={() => setControlAlert(!controlAlert)}
       />
       <FlatList
