@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { connect } from 'react-redux';
 import HeaderComponent from "../../components/HeaderComponent";
 import Alert from '../../components/default/alert/Alert';
 import ListEmpty from '../../components/default/empty/ListEmpty';
-import { addContact, removeContact } from '../../store/actions/contactActions';
 import ModalContacts from './ModalContacts';
 import styles from './StylesIndex';
 
@@ -23,7 +21,6 @@ function ContactManageContent() {
       setControlAlert(true);
       return;
     }
-    // props.addContact(newContact);
     setContacts([...contacts, newContact]);
   };
 
@@ -82,13 +79,4 @@ function ContactManageScreen({navigation}) {
   );
 };
 
-function mapStateToProps(state) {
-  return { contacts: state.contacts.contacts };
-}
-
-const mapDispatchToProps = {
-  addContact,
-  removeContact,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactManageScreen);
+export default ContactManageScreen;
