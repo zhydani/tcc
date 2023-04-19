@@ -5,6 +5,7 @@ import Geolocation from 'react-native-geolocation-service';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HeaderComponent from "../../components/HeaderComponent";
 import Alert from '../../components/default/alert/Alert';
+import Load from '../../components/default/load/Load';
 import requestPermission from "../../utils/LocalizationPermission";
 import styles from './Styles';
 
@@ -15,6 +16,9 @@ const HomeContent = () => {
   const [labelAlert, setLabelAlert] = useState(null);
   const [iconAlert, setIconAlert] = useState(null);
   const [iconColorAlert, setIconColorAlert] = useState(null);
+
+  // Load
+  const [load, setLoad] = useState(false)
   
   useEffect(() => {
     requestPermission();
@@ -37,7 +41,7 @@ const HomeContent = () => {
         
         // Linking.openURL(`whatsapp://send?text=${encodeURIComponent(message)}&phone=${numbers.join(',')}`);
         console.log(message + " numeros enviados:  " + numbers.join(','))
-        setLabelAlert('Mensagens Enviadas');
+        setLabelAlert('Mensagens enviadas');
         setIconAlert('send');
         setIconColorAlert('#FF5D8F');
         setControlAlert(true);
@@ -73,6 +77,8 @@ const HomeContent = () => {
         <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
           <Icon name="location-pin" size={40} color="white"/>
         </TouchableOpacity>
+        
+        <Load control={load} />
       </View>
     </>
   );
