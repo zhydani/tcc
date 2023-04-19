@@ -15,7 +15,6 @@ function ContactManageContent() {
   const handleAddContact = (newContact) => {
     const contactExists = contacts.find(contact => contact.recordID === newContact.recordID);
     if (contactExists) {
-      console.log('ja existe');
       setLabelAlert('Contato já cadastrado');
       setControlAlert(true);
       return;
