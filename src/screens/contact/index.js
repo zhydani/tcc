@@ -2,16 +2,22 @@ import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderComponent from "../../components/HeaderComponent";
+// import { Alert } from '../../components/default/alert/Alert';
+import Alert from '../../components/default/alert/Alert';
 import ModalContacts from './ModalContacts';
 import styles from './StylesIndex';
 
 function ContactManageContent() {
   const [contacts, setContacts] = useState([]);
+  const [controlAlert, setControlAlert] = useState(false)
+  const [labelAlert, setLabelAlert] = useState(null)
 
   const handleAddContact = (newContact) => {
     const contactExists = contacts.find(contact => contact.recordID === newContact.recordID);
     if (contactExists) {
       console.log('ja existe');
+      setLabelAlert('Contato já cadastrado');
+      setControlAlert(true);
       return;
     }
     setContacts([...contacts, newContact]);
@@ -25,6 +31,11 @@ function ContactManageContent() {
 
   return (
     <View style={styles.container}>
+      <Alert 
+        controlAlert={controlAlert} 
+        label={labelAlert}
+        onPress={() => setControlAlert(!controlAlert)}
+      />
       <FlatList
         style={styles.list}
         data={contacts}
