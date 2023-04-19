@@ -12,11 +12,6 @@ async function requestPermission() {
         buttonPositive: 'OK',
       },
     );
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('Permissão de localização concedida');
-    } else {
-      console.log('Permissão de localização negada');
-    }
   } catch (err) {
     console.warn(err);
   }
