@@ -14,6 +14,7 @@ function ModalContacts({ onAddContact }) {
 
   function handleAddContact (newContact) {
     onAddContact(newContact);
+    setModalVisible(false);
   }
 
   useEffect(() => {
