@@ -41,9 +41,9 @@ const [revealed, setRevealed] = useState(false);
         }
         >
         <BackdropSubheader title={subheader} />
-        <Surface style={styles.content}>
-            {content}
-        </Surface>
+            <Surface style={styles.content}>
+                {content}
+            </Surface>
         </Backdrop>
     );
 };
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold'
-    }
+    },
 });
 
 export default Header;
