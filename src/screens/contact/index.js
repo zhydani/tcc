@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderComponent from "../../components/HeaderComponent";
@@ -15,6 +15,20 @@ function ContactManageContent() {
   const [labelAlert, setLabelAlert] = useState(null)
   const [iconAlert, setIconAlert] = useState(null)
   const [iconColorAlert, setIconColorAlert] = useState(null)
+
+  useEffect(() => {
+    const getContacts = async () => {
+      try {
+        const contacts = await AsyncStorage.getItem('@contacts');
+        if (contacts !== null) {
+          setContacts(JSON.parse(contacts));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getContacts();
+  }, []);
   
   const iconAlertSuccess = () => {
     setIconAlert('check');
@@ -45,19 +59,27 @@ function ContactManageContent() {
       setLabelAlert('Contato cadastrado');
       iconAlertSuccess();
     } catch (error) {
-      setLabelAlert('Erro');
+      setLabelAlert(error);
       iconAlertError();
     }
     
     setControlAlert(true);
   };
 
-  const handleRemoveContact = (index) => {
+  const handleRemoveContact = async (index) => {
     const newContacts = [...contacts];
     newContacts.splice(index, 1);
     setContacts(newContacts);
-    setLabelAlert('Contato excluído');
-    iconAlertSuccess();
+
+    try {
+      await AsyncStorage.setItem('@contacts', JSON.stringify(newContacts));
+      setLabelAlert('Contato excluído');
+      iconAlertSuccess();
+    } catch (error) {
+      setLabelAlert(error);
+      iconAlertError();
+    }
+    
     setControlAlert(true);
   };
 
