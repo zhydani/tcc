@@ -33,7 +33,8 @@ function ContactManageContent() {
     
     if (contactExists) {
       setLabelAlert('Contato já cadastrado');
-      iconAlertError;
+      iconAlertError();
+      setControlAlert(true);
       return;
     }
 
@@ -42,10 +43,10 @@ function ContactManageContent() {
     try {
       await AsyncStorage.setItem('@contacts', JSON.stringify([...contacts, newContact]));
       setLabelAlert('Contato cadastrado');
-      iconAlertSuccess;
+      iconAlertSuccess();
     } catch (error) {
       setLabelAlert('Erro');
-      iconAlertError;
+      iconAlertError();
     }
     
     setControlAlert(true);
@@ -56,7 +57,7 @@ function ContactManageContent() {
     newContacts.splice(index, 1);
     setContacts(newContacts);
     setLabelAlert('Contato excluído');
-    iconAlertSuccess;
+    iconAlertSuccess();
     setControlAlert(true);
   };
 
