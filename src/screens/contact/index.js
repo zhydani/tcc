@@ -22,12 +22,16 @@ function ContactManageContent() {
       return;
     }
     setContacts([...contacts, newContact]);
+    setLabelAlert('Contato cadastrado com sucesso');
+    setControlAlert(true);
   };
 
   const handleRemoveContact = (index) => {
     const newContacts = [...contacts];
     newContacts.splice(index, 1);
     setContacts(newContacts);
+    setLabelAlert('Contato excluído com sucesso');
+      setControlAlert(true);
   };
 
   return (
