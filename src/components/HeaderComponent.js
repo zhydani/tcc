@@ -18,19 +18,22 @@ const [revealed, setRevealed] = useState(false);
         style={styles.header}
         header={
             <SafeAreaView>
-            <AppBar
-                title="Ciclo Seguro"
-                transparent
-                leading={props => (
-                <IconButton
-                    icon={props => (
-                    <Icon name={revealed ? "close" : "menu"} {...props} />
+                <AppBar
+                    title="Ciclo Seguro"
+                    titleStyle={styles.title}
+                    transparent
+                    style={styles.appBar}
+                    leading={props => (
+                    <IconButton
+                        style={styles.iconButton}
+                        icon={props => (
+                        <Icon name={revealed ? "close" : "menu"} {...props} size={38}/>
+                        )}
+                        onPress={() => setRevealed(prevState => !prevState)}
+                        {...props}
+                    />
                     )}
-                    onPress={() => setRevealed(prevState => !prevState)}
-                    {...props}
                 />
-                )}
-            />
             </SafeAreaView>
         }
         backLayer={
@@ -53,6 +56,14 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: "#FF5D8F",
     },
+    appBar: {
+        height: 80,
+        padding: 10,
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold'
+    }
 });
 
 export default Header;

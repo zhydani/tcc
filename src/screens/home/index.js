@@ -87,7 +87,7 @@ const HomeContent = () => {
 function HomeScreen({navigation}) {
 
   return (
-    <HeaderComponent subheader="Localização" content={<HomeContent />} navigation={navigation}/>
+    <HeaderComponent subheader="Enviar Localização" content={<HomeContent />} navigation={navigation}/>
   );
 };
 
