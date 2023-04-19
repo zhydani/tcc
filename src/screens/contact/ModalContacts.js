@@ -6,6 +6,7 @@ import { getAllContacts, keyExtractor } from '../../controllers/ContactControlle
 import requestContactsPermission from "../../utils/ContactPermission";
 import ContactItem from './ContactItem';
 import styles from './Styles';
+// import Load from '../../components/default/load/Load';
 
 
 function ModalContacts({ onAddContact }) {
@@ -15,6 +16,8 @@ function ModalContacts({ onAddContact }) {
   const [contacts, setContacts] = useState([]);
   // search
   const [searchText, setSearchText] = useState('');
+  // load
+  // const [load, setLoad] = useState(true)
 
   function handleAddContact (newContact) {
     onAddContact(newContact);
