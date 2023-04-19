@@ -9,12 +9,20 @@ import styles from './Styles';
 
 
 function ModalContacts({ onAddContact }) {
+  // modal visibility
   const [modalVisible, setModalVisible] = useState(false);
+  // contacts list
   const [contacts, setContacts] = useState([]);
+  // search
+  const [searchText, setSearchText] = useState('');
 
   function handleAddContact (newContact) {
     onAddContact(newContact);
     setModalVisible(false);
+  }
+
+  function handleSearch(text) {
+    setSearchText(text);
   }
 
   useEffect(() => {
@@ -31,13 +39,16 @@ function ModalContacts({ onAddContact }) {
   };
   
   const renderItem = ({item, index}) => {
-    // return <ContactItem contact={item} />;
-    return <TouchableOpacity onPress={() => handleAddContact(item)}><ContactItem contact={item} /></TouchableOpacity>
+    if (!searchText || item?.givenName.toLowerCase().includes(searchText.toLowerCase())) {
+      return (
+        <TouchableOpacity onPress={() => handleAddContact(item)}>
+          <ContactItem contact={item} />
+        </TouchableOpacity>
+      );
+    } else {
+      return null;
+    }
   };
-
-  function handlePressContato(contato) {
-    adicionarContato(contato);
-  }
 
   return (
     <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
@@ -53,8 +64,8 @@ function ModalContacts({ onAddContact }) {
               <Ionicons name="search" size={20} color="#ccc" />
               <TextInput
                 style={styles.input}
-                // onChangeText={onChangeNumber}
-                // value={number}
+                onChangeText={handleSearch}
+                value={searchText}
                 placeholder="Buscar contato"
                 keyboardType="default"
               />

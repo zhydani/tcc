@@ -10,11 +10,14 @@ import styles from './StylesIndex';
 
 
 function ContactManageContent() {
+  // Contact list
   const [contacts, setContacts] = useState([]);
-  const [controlAlert, setControlAlert] = useState(false)
-  const [labelAlert, setLabelAlert] = useState(null)
-  const [iconAlert, setIconAlert] = useState(null)
-  const [iconColorAlert, setIconColorAlert] = useState(null)
+  
+  // Alert 
+  const [controlAlert, setControlAlert] = useState(false);
+  const [labelAlert, setLabelAlert] = useState(null);
+  const [iconAlert, setIconAlert] = useState(null);
+  const [iconColorAlert, setIconColorAlert] = useState(null);
 
   useEffect(() => {
     const getContacts = async () => {
