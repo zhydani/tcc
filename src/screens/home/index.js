@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import HeaderComponent from "../../components/HeaderComponent";
 import Alert from '../../components/default/alert/Alert';
 import Load from '../../components/default/load/Load';
+// import database from '../../config/firebaseconfig';
 import requestPermission from "../../utils/LocalizationPermission";
 import styles from './Styles';
 
@@ -77,6 +78,15 @@ const HomeContent = () => {
       console.log(error);
       return [];
     }
+  }
+
+  function addOcorrenciaFirebase(){
+    // database.collection("ocorrencia").add({
+    //   latitude: lat,
+    //   longitude: lon,
+    //   descricao: "pedido de socorro",
+    //   data: 
+    // })
   }
 
   return (
