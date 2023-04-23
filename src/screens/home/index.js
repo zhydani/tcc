@@ -6,9 +6,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import HeaderComponent from "../../components/HeaderComponent";
 import Alert from '../../components/default/alert/Alert';
 import Load from '../../components/default/load/Load';
-// import database from '../../config/firebaseconfig';
 import requestPermission from "../../utils/LocalizationPermission";
 import styles from './Styles';
+
 
 const HomeContent = () => {
 
@@ -20,6 +20,11 @@ const HomeContent = () => {
 
   // Load
   const [load, setLoad] = useState(false)
+
+  // latitude, longitude e data para inserir no firebase
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [dateTime, setDateTime] = useState(new Date().toISOString());
   
   useEffect(() => {
     requestPermission();
@@ -31,11 +36,13 @@ const HomeContent = () => {
     Geolocation.getCurrentPosition(
       position => {
         setLoad(true);
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+        // const lat = position.coords.latitude;
+        // const lon = position.coords.longitude;
 
         // Criar uma mensagem formatada com um link do Google Maps
-        const message = `Socorro! Estou em perigo. Minha localização é:\n\nMinha localização atual: https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
+        const message = `Socorro! Estou em perigo. Minha localização é:\n\nMinha localização atual: https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
 
         // Abrir o aplicativo do WhatsApp e compartilhar a mensagem formatada
         const contactsWithPhone = contacts.filter((c) => c?.phoneNumbers && c?.phoneNumbers.length > 0);
@@ -78,15 +85,6 @@ const HomeContent = () => {
       console.log(error);
       return [];
     }
-  }
-
-  function addOcorrenciaFirebase(){
-    // database.collection("ocorrencia").add({
-    //   latitude: lat,
-    //   longitude: lon,
-    //   descricao: "pedido de socorro",
-    //   data: 
-    // })
   }
 
   return (
